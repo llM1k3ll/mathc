@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math Club - Aprende matemáticas con diversión</title>
+  <style>
+    /* ====== ESTILOS GENERALES ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9fbfd;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4a90e2, #5e60ce);
+      color: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    nav {
+      background-color: #2c3e50;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      margin: 0 1rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #5e60ce;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+      font-size: 2rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #5e60ce;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #5e60ce;
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #4a90e2;
+    }
+
+    .highlight {
+      background-color: #eef7ff;
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    ul {
+      text-align: left;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav li {
+        margin: 0.5rem 0;
+      }
+
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Math Club</h1>
+    <p>¡Donde los números cobran vida!</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre">Sobre Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <section id="inicio">
+    <div class="highlight">
+      <h2>¡Bienvenidos a Math Club!</h2>
+      <p>Un espacio divertido, seguro y efectivo para estudiantes del <strong>3er grado de primaria al 2do año de secundaria</strong>.</p>
+      <p>Clases los <strong>miércoles y viernes de 7:00 p.m. a 8:00 p.m.</strong></p>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre Nosotros</h2>
+    <p>En <strong>Math Club</strong>, creemos que cada estudiante tiene el potencial para entender y disfrutar las matemáticas.</p>
+    <p>Nuestro equipo está formado por educadores apasionados que combinan estrategias didácticas modernas, materiales visuales y juegos educativos para transformar el aprendizaje en una experiencia significativa.</p>
+    <p>Trabajamos con un enfoque personalizado, adaptándonos al ritmo y necesidades de cada alumno.</p>
+  </section>
+
+  <section id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="container">
+      <div class="card">
+        <h3>📚 Reforzamiento Académico</h3>
+        <p>Asesorías y clases personalizadas en matemáticas para superar dificultades, fortalecer conceptos y culminar exitosamente el año escolar.</p>
+      </div>
+      <div class="card">
+        <h3>➕ Formación Básica</h3>
+        <p>Cursos virtuales prácticos e interactivos para dominar las cuatro operaciones fundamentales: suma, resta, multiplicación y división.</p>
+      </div>
+      <div class="card">
+        <h3>🎲 Recursos Didácticos Lúdicos</h3>
+        <p>Juegos de mesa matemáticos, actividades de razonamiento lógico y materiales manipulativos para el aula o el hogar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="horarios">
+    <h2>Horarios y Modalidad</h2>
+    <div class="highlight">
+      <p><strong>📅 Días:</strong> Miércoles y viernes</p>
+      <p><strong>🕕 Hora:</strong> 7:00 p.m. – 8:00 p.m.</p>
+      <p><strong>💻 Modalidad:</strong> Virtual (vía Zoom o plataforma educativa)</p>
+      <p><strong>👥 Grupos pequeños</strong> o <strong>clases individuales</strong> según necesidad</p>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Inscríbete o Contáctanos</h2>
+    <p>¿Listo para que tu hijo(a) domine las matemáticas con confianza? Completa el formulario y nos pondremos en contacto para agendar una <strong>clase de prueba gratuita</strong>.</p>
+    
+    <form action="https://formspree.io/f/tu-form-id" method="POST">
+      <input type="text" name="nombre_estudiante" placeholder="Nombre del estudiante" required />
+      <input type="text" name="grado" placeholder="Grado escolar (ej. 4to primaria)" required />
+      <input type="text" name="nombre_tutor" placeholder="Nombre del padre/madre o tutor" required />
+      <input type="email" name="email" placeholder="Correo electrónico" required />
+      <input type="tel" name="telefono" placeholder="Teléfono de contacto" />
+      <textarea name="mensaje" rows="4" placeholder="Mensaje adicional (opcional)"></textarea>
+      <button type="submit">Enviar solicitud</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Math Club. Todos los derechos reservados.</p>
+    <p>contacto@mathclub.com | WhatsApp: +51 999 999 999</p>
+  </footer>
+
+</body>
+</html>
