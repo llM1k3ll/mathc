@@ -4,7 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Math Club - Aprende matemáticas con diversión</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    /* ====== VARIABLES DE COLOR ====== */
+    :root {
+      --primary: #4a90e2;
+      --secondary: #5e60ce;
+      --accent: #ff9f43;
+      --light: #f9fbfd;
+      --dark: #2c3e50;
+      --success: #2ed573;
+    }
+
     /* ====== ESTILOS GENERALES ====== */
     * {
       margin: 0;
@@ -14,29 +25,58 @@
     }
 
     body {
-      background-color: #f9fbfd;
+      background-color: var(--light);
       color: #333;
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
     header {
-      background: linear-gradient(135deg, #4a90e2, #5e60ce);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 1.5rem 2rem;
+      padding: 3rem 2rem;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      background: #ff6b22;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
 
     nav {
-      background-color: #2c3e50;
-      padding: 1rem;
+      background-color: white;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
     nav ul {
@@ -44,136 +84,159 @@
       justify-content: center;
       list-style: none;
       flex-wrap: wrap;
-    }
-
-    nav li {
-      margin: 0 1rem;
+      gap: 1.5rem;
     }
 
     nav a {
-      color: white;
+      color: var(--dark);
       text-decoration: none;
       font-weight: 600;
       font-size: 1.1rem;
-      transition: color 0.3s;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s;
     }
 
-    nav a:hover {
-      color: #5e60ce;
+    nav a:hover, nav a.active {
+      background: var(--light);
+      color: var(--secondary);
     }
 
     section {
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 2rem;
-      color: #2c3e50;
-      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      color: var(--dark);
+      font-size: 2.2rem;
+      position: relative;
     }
 
-    p {
-      margin-bottom: 1rem;
+    h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 0.5rem auto;
+      border-radius: 2px;
     }
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-
-    .card {
+    .highlight-box {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      width: 300px;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
       text-align: center;
-      transition: transform 0.3s;
+      max-width: 800px;
+      margin: 2rem auto;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
-    .card h3 {
-      color: #5e60ce;
-      margin-bottom: 1rem;
-    }
-
-    footer {
-      background: #2c3e50;
-      color: white;
-      text-align: center;
+    .service-card {
+      background: white;
+      border-radius: 16px;
       padding: 2rem;
-      margin-top: 3rem;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .service-card i {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card h3 {
+      color: var(--dark);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
     }
 
     form {
       max-width: 600px;
-      margin: 0 auto;
+      margin: 2rem auto;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
     }
 
-    input, textarea {
-      padding: 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+    input, textarea, select {
+      padding: 14px;
+      border: 2px solid #e1e5eb;
+      border-radius: 12px;
       font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
     }
 
     button {
-      background: #5e60ce;
+      background: var(--secondary);
       color: white;
       border: none;
-      padding: 1rem;
-      border-radius: 8px;
+      padding: 16px;
+      border-radius: 12px;
       font-size: 1.1rem;
+      font-weight: bold;
       cursor: pointer;
       transition: background 0.3s;
     }
 
     button:hover {
-      background: #4a90e2;
+      background: var(--primary);
     }
 
-    .highlight {
-      background-color: #eef7ff;
-      padding: 2rem;
-      border-radius: 12px;
-      margin: 2rem 0;
+    footer {
+      background: var(--dark);
+      color: white;
       text-align: center;
+      padding: 2.5rem 2rem;
+      margin-top: 3rem;
     }
 
-    ul {
-      text-align: left;
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
+    .contact-info {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-info i {
+      margin: 0 8px;
+      color: var(--accent);
     }
 
     /* ====== RESPONSIVE ====== */
     @media (max-width: 768px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
-
+      header p {
+        font-size: 1.1rem;
+      }
       nav ul {
-        flex-direction: column;
-        align-items: center;
+        gap: 1rem;
       }
-
-      nav li {
-        margin: 0.5rem 0;
-      }
-
-      .card {
-        width: 100%;
+      section {
+        padding: 2.5rem 1.5rem;
       }
     }
   </style>
@@ -183,9 +246,10 @@
   <header>
     <h1>Math Club</h1>
     <p>¡Donde los números cobran vida!</p>
+    <a href="#contacto" class="btn">Inscríbete ahora</a>
   </header>
 
-  <nav>
+  <nav id="navbar">
     <ul>
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#sobre">Sobre Nosotros</a></li>
@@ -196,67 +260,127 @@
   </nav>
 
   <section id="inicio">
-    <div class="highlight">
+    <div class="highlight-box">
       <h2>¡Bienvenidos a Math Club!</h2>
       <p>Un espacio divertido, seguro y efectivo para estudiantes del <strong>3er grado de primaria al 2do año de secundaria</strong>.</p>
       <p>Clases los <strong>miércoles y viernes de 7:00 p.m. a 8:00 p.m.</strong></p>
+      <a href="#contacto" class="btn">Reserva tu clase de prueba</a>
     </div>
   </section>
 
   <section id="sobre">
     <h2>Sobre Nosotros</h2>
-    <p>En <strong>Math Club</strong>, creemos que cada estudiante tiene el potencial para entender y disfrutar las matemáticas.</p>
-    <p>Nuestro equipo está formado por Freddy Yanqui apasionados que combinan estrategias didácticas modernas, materiales visuales y juegos educativos para transformar el aprendizaje en una experiencia significativa.</p>
-    <p>Trabajamos con un enfoque personalizado, adaptándonos al ritmo y necesidades de cada alumno.</p>
+    <div class="highlight-box">
+      <p>En <strong>Math Club</strong>, creemos que cada estudiante tiene el potencial para entender y disfrutar las matemáticas.</p>
+      <p>Nuestro equipo está formado por educadores apasionados que combinan estrategias didácticas modernas, materiales visuales y juegos educativos para transformar el aprendizaje en una experiencia significativa.</p>
+      <p>Trabajamos con un enfoque personalizado, adaptándonos al ritmo y necesidades de cada alumno.</p>
+    </div>
   </section>
 
   <section id="servicios">
     <h2>Nuestros Servicios</h2>
-    <div class="container">
-      <div class="card">
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-book-open"></i>
         <h3>📚 Reforzamiento Académico</h3>
-        <p>Asesorías y clases personalizadas en matemáticas para superar dificultades, fortalecer conceptos y culminar exitosamente el año escolar.</p>
+        <p>Asesorías personalizadas para superar dificultades y fortalecer conceptos clave del currículo escolar.</p>
       </div>
-      <div class="card">
+      <div class="service-card">
+        <i class="fas fa-calculator"></i>
         <h3>➕ Formación Básica</h3>
-        <p>Cursos virtuales prácticos e interactivos para dominar las cuatro operaciones fundamentales: suma, resta, multiplicación y división.</p>
+        <p>Cursos interactivos para dominar suma, resta, multiplicación y división con estrategias visuales.</p>
       </div>
-      <div class="card">
-        <h3>🎲 Recursos Didácticos Lúdicos</h3>
-        <p>Juegos de mesa matemáticos, actividades de razonamiento lógico y materiales manipulativos para el aula o el hogar.</p>
+      <div class="service-card">
+        <i class="fas fa-puzzle-piece"></i>
+        <h3>🎲 Recursos Lúdicos</h3>
+        <p>Juegos de mesa, actividades lógicas y materiales manipulativos para aprender jugando.</p>
       </div>
     </div>
   </section>
 
   <section id="horarios">
     <h2>Horarios y Modalidad</h2>
-    <div class="highlight">
-      <p><strong>📅 Días:</strong> Miércoles y viernes</p>
-      <p><strong>🕕 Hora:</strong> 7:00 p.m. – 8:00 p.m.</p>
-      <p><strong>💻 Modalidad:</strong> Virtual (vía Zoom o plataforma educativa)</p>
-      <p><strong>👥 Grupos pequeños</strong> o <strong>clases individuales</strong> según necesidad</p>
+    <div class="highlight-box">
+      <p><i class="fas fa-calendar-alt"></i> <strong>Días:</strong> Miércoles y viernes</p>
+      <p><i class="fas fa-clock"></i> <strong>Hora:</strong> 7:00 p.m. – 8:00 p.m.</p>
+      <p><i class="fas fa-laptop"></i> <strong>Modalidad:</strong> Virtual (Zoom o plataforma educativa)</p>
+      <p><i class="fas fa-users"></i> <strong>Grupos pequeños</strong> o <strong>clases individuales</strong></p>
     </div>
   </section>
 
   <section id="contacto">
     <h2>Inscríbete o Contáctanos</h2>
-    <p>¿Listo para que tu hijo(a) domine las matemáticas con confianza? Completa el formulario y nos pondremos en contacto para agendar una <strong>clase de prueba gratuita</strong>.</p>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">
+      ¿Listo para que tu hijo(a) domine las matemáticas con confianza? Completa el formulario y agenda tu <strong>clase de prueba gratuita</strong>.
+    </p>
     
     <form action="https://formspree.io/f/tu-form-id" method="POST">
       <input type="text" name="nombre_estudiante" placeholder="Nombre del estudiante" required />
-      <input type="text" name="grado" placeholder="Grado escolar (ej. 4to primaria)" required />
+      <select name="grado" required>
+        <option value="">Selecciona el grado escolar</option>
+        <option value="3ero primaria">3° Primaria</option>
+        <option value="4to primaria">4° Primaria</option>
+        <option value="5to primaria">5° Primaria</option>
+        <option value="6to primaria">6° Primaria</option>
+        <option value="1ero secundaria">1° Secundaria</option>
+        <option value="2do secundaria">2° Secundaria</option>
+      </select>
       <input type="text" name="nombre_tutor" placeholder="Nombre del padre/madre o tutor" required />
       <input type="email" name="email" placeholder="Correo electrónico" required />
       <input type="tel" name="telefono" placeholder="Teléfono de contacto" />
-      <textarea name="mensaje" rows="4" placeholder="Mensaje adicional (opcional)"></textarea>
-      <button type="submit">Enviar solicitud</button>
+      <textarea name="mensaje" rows="4" placeholder="¿Tienes alguna duda o necesidad específica?"></textarea>
+      <button type="submit"><i class="fas fa-paper-plane"></i> Enviar solicitud</button>
     </form>
   </section>
 
   <footer>
     <p>&copy; 2025 Math Club. Todos los derechos reservados.</p>
-    <p>contacto@mathclub.com | WhatsApp: +51 999 999 999</p>
+    <div class="contact-info">
+      <i class="fas fa-envelope"></i> contacto@mathclub.com
+      <i class="fab fa-whatsapp"></i> +51 999 999 999
+    </div>
   </footer>
 
+  <!-- Script para scroll suave y resaltar menú activo -->
+  <script>
+    // Scroll suave
+    document.querySelectorAll('nav a, .btn').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Resaltar sección activa en el menú (opcional)
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 100)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
