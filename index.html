@@ -1,53 +1,372 @@
-# Math Club
-¡Donde los números cobran vida!
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math Club - Aprende matemáticas con diversión</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ====== VARIABLES DE COLOR ====== */
+    :root {
+      --primary: #4a90e2;
+      --secondary: #5e60ce;
+      --accent: #ff9f43;
+      --light: #f9fbfd;
+      --dark: #2c3e50;
+      --success: #2ed573;
+    }
 
-## ¡Bienvenidos a Math Club!
-Un espacio divertido, seguro y efectivo para estudiantes del **3er grado de primaria al 2do año de secundaria**.  
-Clases los **miércoles y viernes de 7:00 p.m. a 8:00 p.m.**
+    /* ====== ESTILOS GENERALES ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-## Sobre Nosotros
-En **Math Club**, creemos que cada estudiante tiene el potencial para entender y disfrutar las matemáticas.  
-Nuestro equipo está formado por Freddy Yanqui, apasionados que combinan estrategias didácticas modernas, materiales visuales y juegos educativos para transformar el aprendizaje en una experiencia significativa.  
-Trabajamos con un enfoque personalizado, adaptándonos al ritmo y necesidades de cada alumno.
+    body {
+      background-color: var(--light);
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
 
-## Nuestros Servicios
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+    }
 
-### Reforzamiento Académico
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://llm1k3ll.github.io/mathc/caricatura.jpg" alt="Estudiante en clase de matemáticas" width="520" style="border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-</div>
+    header p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-Asesorías y clases personalizadas en matemáticas para superar dificultades, fortalecer conceptos y culminar exitosamente el año escolar.
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
 
-<div style="text-align: center; margin: 25px 0;">
-  <a href="https://docs.google.com/forms/d/14wHTDbXn9Of4lFrHMjhk7LaddnRU_5IjqUXMagt9Jfg/edit" target="_blank" style="display: inline-block; background-color: #28a745; color: white; padding: 12px 28px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-    📝 ¡Inscríbete ahora!
-  </a>
-</div>
+    .btn:hover {
+      background: #ff6b22;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
 
-### ➕ Formación Básica
-Cursos virtuales prácticos e interactivos para dominar las cuatro operaciones fundamentales: suma, resta, multiplicación y división.
+    nav {
+      background-color: white;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-### Recursos Didácticos Lúdicos
-Juegos de mesa matemáticos, actividades de razonamiento lógico y materiales manipulativos para el aula o el hogar.
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
 
-## Horarios y Modalidad
-**Días:** Miércoles y viernes  
-**Hora:** 7:00 p.m. – 8:00 p.m.  
-**Modalidad:** Virtual (vía Zoom o plataforma educativa)  
-**Grupos pequeños** o **clases individuales** según necesidad
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
 
-## Inscríbete o Contáctanos
+    nav a:hover, nav a.active {
+      background: var(--light);
+      color: var(--secondary);
+    }
 
-<div style="text-align: center; margin: 20px 0;">
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: var(--dark);
+      font-size: 2.2rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+
+    .highlight-box {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      text-align: center;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .service-card i {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card h3 {
+      color: var(--dark);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    input, textarea, select {
+      padding: 14px;
+      border: 2px solid #e1e5eb;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    button {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--primary);
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-info i {
+      margin: 0 8px;
+      color: var(--accent);
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+      nav ul {
+        gap: 1rem;
+      }
+      section {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div style="text-align: center; margin: 20px 0;">
   <img src="https://llm1k3ll.github.io/mathc/Logo1.PNG" alt="Logo Math Club" width="280" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
 </div>
+        <p>¡Donde los números cobran vida!</p>
+    
+  </header>
 
-¿Listo para que tu hijo(a) domine las matemáticas con confianza? Completa el formulario y nos pondremos en contacto para agendar una **clase de prueba gratuita**.
+  <nav id="navbar">
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre">Sobre Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
 
-<div style="text-align: center; margin: 25px 0;">
-  <a href="https://docs.google.com/forms/d/14wHTDbXn9Of4lFrHMjhk7LaddnRU_5IjqUXMagt9Jfg/edit" target="_blank" style="display: inline-block; background-color: #007BFF; color: white; padding: 12px 28px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+  <section id="inicio">
+    <div class="highlight-box">
+      <h2>¡Bienvenidos a Math Club!</h2>
+      <p>Un espacio divertido, seguro y efectivo para estudiantes del <strong>3er grado de primaria al 2do año de secundaria</strong>.</p>
+      <p>Clases los <strong>Lunes y Jueves de 7:30 p.m. a 8:30 p.m.</strong></p>
+      <a href="#contacto" class="btn">Reserva tu clase de prueba</a>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre Nosotros</h2>
+    <div class="highlight-box">
+      <p>En <strong>Math Club</strong>, creemos que cada estudiante tiene el potencial para entender y disfrutar las matemáticas.</p>
+      <p>Nuestro equipo está formado por Freddy y Miguel que combinan estrategias didácticas modernas, materiales visuales y juegos educativos para transformar el aprendizaje en una experiencia significativa.</p>
+      <p>Trabajamos con un enfoque personalizado, adaptándonos al ritmo y necesidades de cada alumno.</p>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div style="text-align: center; margin: 20px 0;">
+  <img src="https://llm1k3ll.github.io/mathc/reforzamiento.jpg" alt="Estudiante recibiendo ayuda en matemáticas" width="500" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+</div>
+        <h3>📚 Reforzamiento Académico</h3>
+        <p>INICIO DE CLASES DEL 13 NOVIEMBRE AL 18 DE DICIEMBRE.</p>
+      </div>
+     
+     
+    </div>
+  </section>
+
+  <section id="horarios">
+    <h2>Horarios y Modalidad</h2>
+    <div class="highlight-box">
+      <p><i class="fas fa-calendar-alt"></i> <strong>Días:</strong> Lunes y Jueves</p>
+      <p><i class="fas fa-clock"></i> <strong>Hora:</strong> 7:30 p.m. – 8:30 p.m.</p>
+      <p><i class="fas fa-laptop"></i> <strong>Modalidad:</strong> Virtual (Zoom o plataforma educativa)</p>
+      <p><i class="fas fa-users"></i> <strong>Grupos pequeños</strong> o <strong>clases individuales</strong></p>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Inscríbete o Contáctanos</h2>
+
+    <div style="text-align: center; margin: 20px 0;">
+  <img src="https://llm1k3ll.github.io/mathc/Logo1.PNG" alt="Logo Math Club" width="280" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+</div>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">
+      ¿Listo para que tu hijo(a) domine las matemáticas con confianza? Completa el formulario y agenda tu <strong>clase de prueba gratuita</strong>.
+    </p>
+    
+    <div style="text-align: center; margin: 25px 0;">
+  <a href="https://docs.google.com/forms/d/14wHTDbXn9Of4lFrHMjhk7LaddnRU_5IjqUXMagt9Jfg/edit" target="_blank" style="display: inline-block; background-color: #007BFF; color: white; padding: 12px 28px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 1.1em; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
     📝 ¡Inscríbete ahora!
   </a>
 </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Math Club. Todos los derechos reservados.</p>
+    <div class="contact-info">
+      <i class="fas fa-envelope"></i> mateclub1984@gmail.com
+      <i class="fab fa-whatsapp"></i> +51 935 127 422
+    </div>
+  </footer>
+
+  <!-- Script para scroll suave y resaltar menú activo -->
+  <script>
+    // Scroll suave
+    document.querySelectorAll('nav a, .btn').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Resaltar sección activa en el menú (opcional)
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 100)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
